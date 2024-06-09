@@ -1,5 +1,5 @@
-class KeyApp {
-  KeyApp._();
+class AppKey {
+  AppKey._();
   static const String Base_URL = 'phimapi.com';
 
   static const String IS_SET_LANGUAGE = 'Is_Select_Language';
@@ -17,6 +17,4 @@ class KeyApp {
   static const String FAVORITE_MOVIE_BOX = 'favorite_Movie_Box';
   static const String VIEW_HISTORY_BOX = 'view_history';
   static const String IS_SELECTED_NOTIFICATION = 'is_selected_notification';
-
-
 }
