@@ -1,6 +1,9 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_core/config/app_logger.dart';
 import 'package:flutter_core/net_work/api_service.dart';
+import 'package:flutter_core/net_work/rest_api.dart';
+import 'package:retrofit/retrofit.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,22 +19,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> makeApiRequest() async {
-    print('call api ne');
+    final restApi =
+        RestClient(Dio(BaseOptions(contentType: 'application/json')));
     try {
-      final response = await APIService.instance.request(
-        '/posts/1',
-        DioMethod.get,
-        contentType: 'application/json',
-      );
-
-      if (response.statusCode == 200) {
-        logger.f(response.data);
-      } else {
-        print('API call failed: ${response.statusMessage}');
-      }
-    } catch (e) {
-      print('Network error occurred: $e');
-    }
+      final response = await restApi.getPosts();
+      print(response);
+    } catch (e) {}
   }
 
   @override
@@ -42,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               makeApiRequest();
             },
-            child: Text('submit')),
+            child: const Text('submit')),
       ),
     );
   }

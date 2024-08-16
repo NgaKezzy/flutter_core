@@ -1,5 +1,5 @@
-class AppKey {
-  AppKey._();
+class Constraints {
+  Constraints._();
   static const String Base_URL = 'phimapi.com';
 
   static const String IS_SET_LANGUAGE = 'Is_Select_Language';
